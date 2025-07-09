@@ -1,0 +1,42 @@
+name: parcialfinal
+services:
+  database:
+    image: postgres:latest
+    container_name: supportdb-container
+    restart: unless-stopped
+    volumes:
+      - parcialfinal:/var/lib/postgresql/data
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: supportdb
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d supportdb" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  support-backend:
+    image: support-backend:dev
+    networks:
+      - backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+    build:
+      context: ./
+
+
+
+volumes:
+  parcialfinal:
+
+networks:
+  backend:

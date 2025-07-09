@@ -3,6 +3,7 @@ package com.uca.parcialfinalncapas.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,15 +15,15 @@ import java.util.Date;
 @Service
 public class JwtService {
     private final CustomUserDetailsService customUserDetailsService;
-    @Value("${jwt.secret}")
-    private String JwtSecret;
-    //Expiration time in milliseconds
-    @Value("${jwt.expiration}")
-    private Long JwtExpirationMillis;
+    private final String JwtSecret;
+    private final Long JwtExpirationMillis;
 
-    @Autowired
-    public JwtService(CustomUserDetailsService customUserDetailsService) {
+    public JwtService(CustomUserDetailsService customUserDetailsService,
+                      @Value("${spring.jwt.secret}") String jwtSecret,
+                      @Value("${spring.jwt.expiration}") Long jwtExpirationMillis) {
         this.customUserDetailsService = customUserDetailsService;
+        this.JwtSecret = jwtSecret;
+        this.JwtExpirationMillis = jwtExpirationMillis;
     }
 
     public String generateToken(String username) {
