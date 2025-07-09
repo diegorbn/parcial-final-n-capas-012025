@@ -1,12 +1,11 @@
 package com.uca.parcialfinalncapas.entities;
 
+import com.uca.parcialfinalncapas.utils.enums.Rol;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
 
 @Entity
 @Data
@@ -21,9 +20,6 @@ public class User {
     private String nombre;
     private String correo;
     private String password;
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
-    )
-    private Set<Role> role;
+    @Enumerated(EnumType.STRING)
+    private Rol nombreRol;
 }
