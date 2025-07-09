@@ -64,3 +64,9 @@ _Si van a crear mas endpoints como el login o registrarse recuerden actualizar p
 - [ ] Probar todos los flujos con Postman/Insomnia/Bruno.
 - [ ] Mostrar que los roles se comportan correctamente.
 - [ ] Incluir usuarios de prueba (`user`, `tech`) y contraseñas.
+
+
+COMO LEVANTAR EL PROYECTO?
+
+1. Ir al root del proyecto, ahi veremos un archivo llamado docker-compose.yml
+2. Ejecutar: docker compose up --build
