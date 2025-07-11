@@ -11,7 +11,7 @@ COMO LEVANTAR EL PROYECTO?
 
 1. Generar el archivo JAR
 
-Primero necesitamos generar el archivo JAR, para esto podemos irnos a la pestania de Maven en Intellij y ejecutar el comando **clean package** (Con los tests apagados). O bien ejecutar **./mvnw clean package -DskipTests** desde la terminal.
+Primero necesitamos generar el archivo JAR, para esto podemos irnos a la pestania de Maven en Intellij, dar click en el boton Toggle 'Skip Tests' Mode, dar click en el icono de la terminal y ejecutar el comando **mvn clean package**. O bien ejecutar **./mvnw clean package -DskipTests** desde la terminal.
 
 2. Hacer que docker se encargue del resto :P
 
