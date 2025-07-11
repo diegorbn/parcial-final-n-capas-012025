@@ -7,6 +7,18 @@ Este repositorio contiene un proyecto para evaluar y practicar los conceptos de 
 - Sección: 02
 ---
 
+COMO LEVANTAR EL PROYECTO?
+
+1. Generar el archivo JAR
+
+Primero necesitamos generar el archivo JAR, para esto podemos irnos a la pestania de Maven en Intellij y ejecutar el comando **clean package** (Con los tests apagados). O bien ejecutar **./mvnw clean package -DskipTests** desde la terminal.
+
+2. Hacer que docker se encargue del resto :P
+
+Una vez se haya generado el archivo JAR, solo necesitamos ejecutar en el root del proyecto (Donde esta el docker-compose.yml) el comando:
+**docker compose up --build**, y listo, el proyecto deberia de ejecutarse, si no queremos que bloquee la terminal, podemos agregarle la flag de detached (-d).
+
+
 ## Sistema de Soporte Técnico
 
 ### Descripción
@@ -64,9 +76,3 @@ _Si van a crear mas endpoints como el login o registrarse recuerden actualizar p
 - [ ] Probar todos los flujos con Postman/Insomnia/Bruno.
 - [ ] Mostrar que los roles se comportan correctamente.
 - [ ] Incluir usuarios de prueba (`user`, `tech`) y contraseñas.
-
-
-COMO LEVANTAR EL PROYECTO?
-
-1. Ir al root del proyecto, ahi veremos un archivo llamado docker-compose.yml
-2. Ejecutar: docker compose up --build
